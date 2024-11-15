@@ -1,0 +1,25 @@
+@import 'variables';
+
+.blogs-section {
+  background-color: $background-gray-light;
+
+  .blogs-container {
+    max-width: $container-width-large;
+    margin: auto;
+    text-align: center;
+    padding: $padding-xl 0px;
+
+    .title {
+      font-weight: $font-weight-medium;
+    }
+
+    .blog-items {
+      display: flex;
+      margin-top: $margin-xl;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+}

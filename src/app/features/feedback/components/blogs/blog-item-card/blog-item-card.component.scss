@@ -1,0 +1,70 @@
+@import 'variables';
+
+.blog-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  background: white;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  
+  .blog-img {
+    height: 130px;
+    width: 100%;
+  }
+
+  .blog-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: $padding-medium $padding-large;
+    
+    .blog-title,
+    .blog-text {
+      margin: 0;
+    }
+
+    .blog-text {
+      font-size: $font-size-xs;
+      font-weight: $font-weight-light;
+      margin: $margin-small 0px;
+      color: $text-color-muted;
+    }
+
+    .read-button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+      color: $link-color;
+      font-weight: $font-weight-regular;
+      transition: .2s ease-in-out;
+      width: fit-content;
+
+      &:hover {
+        transform: translate(2px, 0px);
+      }
+    }
+
+  }
+
+}
+
+.skeleton {
+  width: 240px;
+  height: 130px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $border-radius-small;
+}
+
+@keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+}

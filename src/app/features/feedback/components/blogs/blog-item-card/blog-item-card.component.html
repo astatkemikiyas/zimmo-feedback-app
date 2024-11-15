@@ -1,0 +1,11 @@
+<div class="blog-card">
+  <div *ngIf="isLoading" class="skeleton"></div>
+
+  <img *ngIf="!isLoading" class="blog-img" [src]="imageUrl" (error)="onError()" alt="Blog Image" />
+  <div class="blog-content">
+    <h5 class="blog-title">6 makkelijke manieren om voor een huis te sparen</h5>
+    <p class="blog-text">Een huis kopen een onbereikbare toekomstdroom? Dat hoeft helemaal niet!
+    </p>
+    <button class="read-button">Lees meer &raquo;</button>
+  </div>
+</div>

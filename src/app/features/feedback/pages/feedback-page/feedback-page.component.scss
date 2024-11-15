@@ -1,0 +1,47 @@
+@import 'variables';
+
+.feedback-section {
+  padding-bottom: $padding-xl;
+
+  .call-to-action-container {
+    text-align: center;
+    font-size: $font-size-sm;
+
+    .title {
+      font-weight: $font-weight-medium;
+    }
+
+    .info-text {
+      text-align: center;
+      color: $text-color-muted;
+      font-size: $font-size-sm;
+    }
+
+    .action-buttons-container {
+      margin: $margin-xxl 0px;
+
+      .action-button {
+        color: $button-color;
+        background: white;
+        padding: $padding-small $padding-medium;
+        border: 1px solid $button-color;
+        border-radius: $border-radius-small;
+        font-weight: $font-weight-regular;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+
+        &:first-child {
+          margin-right: $margin-xl;
+        }
+
+        &:hover {
+          background: $button-color;
+          color: white;
+        }
+      }
+
+    }
+  }
+
+}
