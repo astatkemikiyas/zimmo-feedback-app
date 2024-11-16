@@ -68,3 +68,11 @@
       background-position: -200% 0;
     }
 }
+
+// RESPONSIVE
+@media (max-width: 550px) {
+    .blog-card {
+      width: 100%;
+    }
+}
+
