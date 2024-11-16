@@ -68,16 +68,13 @@ export class FeedbackFormComponent {
           this.successMessage = 'Feedback met succes verzonden!';
           this.feedbackForm?.get('rating')?.disable();
         },
-        error: (error) => {
+        error: () => {
           this.errorMessage = 'Er is iets misgegaan. Probeer het later opnieuw.';
-          console.error('Error: ', error);
         },
         complete: () => {
           this.loading = false;
         },
       });
-    } else {
-      this.successMessage = '';
     }
   }
 
