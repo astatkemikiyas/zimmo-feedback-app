@@ -2,12 +2,12 @@
 
 .blogs-section {
   background-color: $background-gray-light;
+  padding: $padding-large;
 
   .blogs-container {
     max-width: $container-width-large;
     margin: auto;
     text-align: center;
-    padding: $padding-xl 0px;
 
     .title {
       font-weight: $font-weight-medium;

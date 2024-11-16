@@ -1,0 +1,32 @@
+# Dependency directories
+node_modules/
+
+# Generated files
+dist/
+out-tsc/
+
+# IDE and Editor files
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+*.sublime-project
+*.sublime-workspace
+.vscode/
+.history/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+src/environments/environment.*.ts
+src/environments/environment.prod.ts
+
+# Angular CLI specific
+.angular/
+angular.json
+
+# Angular cache
+.cache/
