@@ -17,7 +17,7 @@ export class BlogItemCardComponent implements OnInit {
     this.fetchImage();
   }
 
-  fetchImage(): void {
+  private fetchImage(): void {
     this.blogService.getRandomImage().subscribe({
       next: (response: Blob) => {
         this.imageUrl = URL.createObjectURL(response);
@@ -30,7 +30,7 @@ export class BlogItemCardComponent implements OnInit {
     });
   }
 
-  onError() {
+  public onError() {
     this.imageUrl = this.fallbackImageUrl;
   }
 }

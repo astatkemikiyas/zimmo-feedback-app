@@ -11,12 +11,12 @@ import { FeedbackService } from '../../services/feedback.service';
 })
 export class FeedbackFormComponent {
   feedbackForm?: FormGroup;
-  ratings: { src: string; rating: number }[] = [
-    { src: 'assets/icons/neutral.png', rating: 1 },
-    { src: 'assets/icons/smiley.png', rating: 2 },
-    { src: 'assets/icons/slightly-happy.png', rating: 3 },
-    { src: 'assets/icons/happy.png', rating: 4 },
-    { src: 'assets/icons/very-happy.png', rating: 5 },
+  ratings: { src: string; rating: number; description: string }[] = [
+    { src: 'assets/icons/neutral.png', rating: 1, description: 'Not Impressed' },
+    { src: 'assets/icons/smiley.png', rating: 2, description: 'Slightly Happy' },
+    { src: 'assets/icons/slightly-happy.png', rating: 3, description: 'Happy' },
+    { src: 'assets/icons/happy.png', rating: 4, description: 'Very Happy' },
+    { src: 'assets/icons/very-happy.png', rating: 5, description: 'Extremely Happy' },
   ];
   ratingSubscription?: Subscription;
   submitted: boolean = false;

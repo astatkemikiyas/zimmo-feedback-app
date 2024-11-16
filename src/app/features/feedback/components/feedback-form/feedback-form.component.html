@@ -18,7 +18,7 @@
             [class.animate]="isRatingSelected(rating.rating) && !successMessage"
             [class.disable-rating]="successMessage">
             <input type="radio" formControlName="rating" [value]="rating.rating">
-            <img [src]="rating.src" alt="emoji" class="emoji-image">
+            <img [src]="rating.src" [alt]="rating.description" class="emoji-image">
           </label>
         </ng-container>
       </div>
