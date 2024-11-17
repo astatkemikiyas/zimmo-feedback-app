@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../../services/blog.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog-item-card',
@@ -18,17 +19,21 @@ export class BlogItemCardComponent implements OnInit {
   }
 
   private fetchImage(): void {
-    this.blogService.getRandomImage().subscribe({
-      next: (response: Blob) => {
-        this.imageUrl = URL.createObjectURL(response);
-        this.isLoading = false;
-      },
-      error: () => {
-        this.imageUrl = this.fallbackImageUrl;
-        this.isLoading = false;
-      },
-    });
-  }
+    this.blogService.getRandomImage()
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe({
+        next: (response: Blob) => {
+          this.imageUrl = URL.createObjectURL(response);
+        },
+        error: () => {
+          this.imageUrl = this.fallbackImageUrl;
+        }
+      });
+}
 
   public onError() {
     this.imageUrl = this.fallbackImageUrl;

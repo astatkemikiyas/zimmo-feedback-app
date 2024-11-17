@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { finalize, Subscription } from 'rxjs';
 import { Feedback } from 'src/app/features/feedback/types/feedback';
 import { FeedbackService } from '../../services/feedback.service';
 
@@ -22,7 +22,7 @@ export class FeedbackFormComponent {
   submitted: boolean = false;
   successMessage: string = '';
   errorMessage: string = '';
-  loading: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private feedbackService: FeedbackService) {}
 
@@ -45,14 +45,18 @@ export class FeedbackFormComponent {
 
   public isFeedbackInvalid(): boolean {
     const feedbackControl = this.feedbackForm?.get('feedback');
-    return !!(feedbackControl && feedbackControl.invalid && (feedbackControl.touched || this.submitted));
+    return !!(
+      feedbackControl &&
+      feedbackControl.invalid &&
+      (feedbackControl.touched || this.submitted)
+    );
   }
-  
+
   public isRatingSelected(rating: number): boolean {
     const selectedRating = this.feedbackForm?.controls['rating']?.value;
     return selectedRating === rating;
   }
-  
+
   public submitForm(): void {
     if (!this.submitted) this.submitted = true;
     if (this.errorMessage) this.dismissError();
@@ -63,23 +67,27 @@ export class FeedbackFormComponent {
         feedback: this.feedbackForm.get('feedback')?.value,
       };
 
-      this.feedbackService.submitFeedback(feedbackData).subscribe({
-        next: () => {
-          this.successMessage = 'Feedback met succes verzonden!';
-          this.feedbackForm?.get('rating')?.disable();
-        },
-        error: () => {
-          this.errorMessage = 'Er is iets misgegaan. Probeer het later opnieuw.';
-        },
-        complete: () => {
-          this.loading = false;
-        },
-      });
+      this.feedbackService
+        .submitFeedback(feedbackData)
+        .pipe(
+          finalize(() => {
+            this.isLoading = false;
+          })
+        )
+        .subscribe({
+          next: () => {
+            this.successMessage = 'Feedback met succes verzonden!';
+            this.feedbackForm?.get('rating')?.disable();
+          },
+          error: () => {
+            this.errorMessage =
+              'Er is iets misgegaan. Probeer het later opnieuw.';
+          },
+        });
     }
   }
 
   public dismissError(): void {
     this.errorMessage = '';
   }
-
 }
