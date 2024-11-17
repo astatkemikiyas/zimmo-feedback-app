@@ -5,7 +5,7 @@
   margin: auto;
 
   .feedback-form {
-    padding: $padding-xl;
+    padding: $padding-xl 0px;
 
     .alert-error {
       background-color: $error-toast-bg-color;
@@ -34,12 +34,13 @@
 
       .rating-header {
         background-color: $primary-color;
-        padding: 30px 50px 45px 50px;
+        padding: 30px 50px 50px 50px;
         border-radius: $border-radius-huge;
         display: flex;
         justify-content: center;
 
         .form-title {
+          font-weight: $font-weight-medium;
           font-size: $font-size-lg;
           color: white;
         }
