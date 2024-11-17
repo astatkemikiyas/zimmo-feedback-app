@@ -33,9 +33,5 @@ export class BlogItemCardComponent implements OnInit {
           this.imageUrl = this.fallbackImageUrl;
         }
       });
-}
-
-  public onError() {
-    this.imageUrl = this.fallbackImageUrl;
   }
 }
